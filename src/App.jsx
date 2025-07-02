@@ -26,7 +26,7 @@ function App() {
   ];
 
   return (
-    <Router>
+      <Router basename="/my-portfolio">
       <nav>
         <div className="container">
           <div className="logo">Harwinder Singh</div>

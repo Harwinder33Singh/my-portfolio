@@ -1,0 +1,122 @@
+/* SeeMe.css */
+
+/* Reuse .page wrapper for consistent styling */
+.seeme-page.page {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+  }
+  
+  /* Hero Section */
+  .seeme-hero {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .seeme-hero h1 {
+    font-size: 2.25rem;
+    margin-bottom: 0.5rem;
+    color: #222;
+  }
+  .seeme-hero p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  /* Generic Section Styling */
+  .seeme-section {
+    margin-bottom: 2rem;
+  }
+  .seeme-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #222;
+  }
+  .seeme-section p {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+  }
+  
+  /* Lists without default bullets */
+  .seeme-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .seeme-section ul li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .seeme-section ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #00d2ff;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+  
+  /* Tech Stack Grid */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  .tech-badge {
+    display: inline-block;
+    background: #e6f7ff;
+    color: #0077b6;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.875rem;
+  }
+  
+  /* Feature List with checkmarks */
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .feature-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .feature-list li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #00d2ff;
+    font-size: 1rem;
+    line-height: 1;
+  }
+  
+  /* Challenges & Solutions Inline Bold */
+  .seeme-section li strong {
+    color: #222;
+  }
+  
+  /* Back Link Styling */
+  .seeme-back {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: #00d2ff;
+    border: 2px solid #00d2ff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover {
+    background: #00d2ff;
+    color: #fff;
+  }
+  

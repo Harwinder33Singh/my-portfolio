@@ -1,0 +1,139 @@
+/* ===== theming vars ===== */
+:root {
+  --bg: #f4f4f4;
+  --card: #fff;
+  --nav-bg: #222;
+  --link: #bbb;
+  --link-active: #fff;
+  --accent: #00d2ff;
+  --radius: 8px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.05);
+  --transition: 0.25s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--bg);
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  position: sticky;
+  top: 0;
+  background: var(--nav-bg);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  z-index: 100;
+}
+
+nav .container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--link-active);
+}
+
+/* link list */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  position: relative;
+  color: var(--link);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  transition: color var(--transition);
+}
+
+/* underline effect */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--link-active);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+.hamburger span {
+  height: 3px;
+  width: 24px;
+  background: var(--link-active);
+  transition: transform var(--transition);
+}
+
+/* ===== PAGE CARD ===== */
+.page {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: var(--card);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: fadeSlide .5s ease both;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+h1 { color: #222; margin-bottom: 1rem; }
+p  { color: #444; }
+
+/* ===== MOBILE ===== */
+@media (max-width: 650px) {
+  .nav-links {
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    width: 60%;
+    flex-direction: column;
+    padding: 4rem 1.5rem;
+    background: var(--nav-bg);
+    transform: translateX(100%);
+    transition: transform var(--transition);
+  }
+  .nav-links.open {
+    transform: translateX(0);
+  }
+  .hamburger {
+    display: flex;
+  }
+}

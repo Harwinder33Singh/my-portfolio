@@ -1,0 +1,52 @@
+.page {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .contact-header {
+    text-align: center;
+  }
+  
+  .contact-header h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+  }
+  
+  .contact-header p {
+    margin-bottom: 1.5rem;
+    color: #555;
+  }
+  
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+  }
+  
+  .contact-info .icon {
+    font-size: 1.25rem;
+    color: #00d2ff;
+  }
+  
+  .contact-info a {
+    color: #00d2ff;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .contact-info a:hover {
+    color: #007aab;
+  }
+  

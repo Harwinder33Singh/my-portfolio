@@ -25,7 +25,7 @@ export default function Home() {
           Graduated with honors from Arizona State University (4.0 GPA), I’ve built 
           real-time voice assistants at SeeMe LLC and multiplayer XR experiences at Meteor Studio.
         </p>
-        <a href="/projects" className="btn-primary">View Projects</a>
+        <a href="/my-portfolio/projects" className="btn-primary">View Projects</a>
       </section>
 
       {/* Timeline Section */}

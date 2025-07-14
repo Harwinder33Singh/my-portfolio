@@ -9,7 +9,7 @@ const projects = [
   {
     title: 'SeeMe AI Voice Assistant',
     description: 'Engineered iOS components for a voice-enabled AI assistant using OpenAI Whisper & WebRTC with sub-400ms latency.',
-    image: '/assets/seeme-voice.png',
+    image: '/assets/SeeMeLogo.png',
     link: '/projects/seeme-voice'
   },
   {

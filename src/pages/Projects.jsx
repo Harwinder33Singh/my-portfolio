@@ -3,32 +3,36 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './Projects.css';
 import SeeMe from './Projects/Seeme.jsx';
+import SeeMeLogo from '../assets/SeeMeLogo.png'
+import MOTF from '../assets/interplanetary-MARS_on_the_field-martian_landscape-asu-1920-1.jpg'
+import Career from '../assets/mqdefault.jpg'
+import Epics from '../assets/epics.png'
 
 // Projects data sourced from CV and resume
 const projects = [
   {
     title: 'SeeMe AI Voice Assistant',
     description: 'Engineered iOS components for a voice-enabled AI assistant using OpenAI Whisper & WebRTC with sub-400ms latency.',
-    image: '/assets/SeeMeLogo.png',
+    image: SeeMeLogo,
     link: '/projects/seeme-voice'
   },
   {
     title: 'Mars on the Field',
     description: 'Built a multiplayer VR tracking system in Unity for a Mars exploration exhibit, ensuring accurate player synchronization.',
-    image: '/assets/mars-field.png',
+    image: MOTF,
     link: '/projects/mars-field'
   },
   {
     title: 'Career Xrcade',
     description: 'Led design of interactive XR career simulations with Unity Physics Engine for Verizon’s Career Xrcade.',
-    image: '/assets/career-xrcade.png',
+    image: Career,
     link: 'https://meteor.ame.asu.edu/projects/careerXRcade/'
   },
   {
     title: 'AZGFD Voltage Monitoring Device',
     description: 'Designed an EPICS ASU device using Raspberry Pi to monitor hatchery voltage and alert managers to anomalies.',
-    image: '/assets/azgfd-voltage.png',
-    link: '/projects/voltage-monitor'
+    image: Epics,
+    link: 'https://epics.engineering.asu.edu/2023/10/az-game-fish-azgfd-voltage-monitoring-device/'
   },
   {
     title: 'Med-GEMMA DR Classifier',

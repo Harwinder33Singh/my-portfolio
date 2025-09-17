@@ -243,11 +243,24 @@ body {
     width: 95%;
     top: 10px;
   }
-  
+
   .nav-links {
-    display: none;
+    display: flex;
+    gap: 4px;
   }
-  
+
+  .nav-link {
+    font-size: 14px;
+    padding: 8px 12px;
+    font-weight: 600;
+  }
+
+  .nav-cta {
+    font-size: 14px;
+    padding: 8px 16px;
+    min-width: auto;
+  }
+
   .nav-container {
     justify-content: space-between;
   }
@@ -262,5 +275,23 @@ body {
     --spacing: 16px;
     --border-radius: 20px;
     --border-radius-sm: 12px;
+  }
+
+  .nav-links {
+    gap: 2px;
+  }
+
+  .nav-link {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .nav-cta {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .logo-text {
+    font-size: 18px;
   }
 }

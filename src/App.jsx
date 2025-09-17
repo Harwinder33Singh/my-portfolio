@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink as RRNavLink } from 'react-router-dom';
 import './App.css';
 
 // Import pages
@@ -59,20 +59,21 @@ function App() {
             </motion.div>
             
             <div className="nav-links">
-              <NavLink href="/">Home</NavLink>
-              <NavLink href="/projects">Projects</NavLink>
-              <NavLink href="/contact">Contact</NavLink>
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/projects">Projects</NavLink>
+              <NavLink to="/contact">Contact</NavLink>
             </div>
 
-            <motion.button
-              className="nav-cta"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-              onClick={() => window.location.href = '/contact'}
-            >
-              Let's Talk
-            </motion.button>
+            <RRNavLink to="/contact">
+              <motion.button
+                className="nav-cta"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+              >
+                Let's Talk
+              </motion.button>
+            </RRNavLink>
           </div>
         </motion.nav>
 
@@ -89,25 +90,30 @@ function App() {
   );
 }
 
-function NavLink({ href, children }) {
-  const isActive = window.location.pathname === href;
-  
+function NavLink({ to, children }) {
   return (
-    <motion.a
-      href={href}
-      className={`nav-link ${isActive ? 'active' : ''}`}
-      whileHover={{ y: -2 }}
-      transition={{ duration: 0.2 }}
+    <RRNavLink
+      to={to}
+      className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
     >
-      {children}
-      {isActive && (
-        <motion.div
-          className="nav-indicator"
-          layoutId="nav-indicator"
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-        />
+      {({ isActive }) => (
+        <>
+          <motion.span
+            whileHover={{ y: -2 }}
+            transition={{ duration: 0.2 }}
+          >
+            {children}
+          </motion.span>
+          {isActive && (
+            <motion.div
+              className="nav-indicator"
+              layoutId="nav-indicator"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            />
+          )}
+        </>
       )}
-    </motion.a>
+    </RRNavLink>
   );
 }
 

@@ -1,72 +1,113 @@
-// src/App.js
-import { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  NavLink
-} from 'react-router-dom';
-
-import Home     from './pages/Home';
-import Projects from './pages/Projects';
-import Contact  from './pages/Contact';
-import Seeme from './pages/Projects/Seeme.jsx';
-import MarsField from './pages/Projects/MarsField.jsx';
-
-
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
-function App() {
-  const [open, setOpen] = useState(false);
+// Import pages
+import BentoHome from './pages/BentoHome';
+import Projects from './pages/Projects';
+import Contact from './pages/Contact';
+import SeeMe from './pages/Projects/Seeme';
+import MarsField from './pages/Projects/MarsField';
 
-  const links = [
-    { to: '/',        label: 'Home'     },
-    { to: '/projects',label: 'Projects' },
-    { to: '/contact', label: 'Contact'  },
-  ];
+function App() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   return (
-      <Router basename="/my-portfolio">
-      <nav>
-        <div className="container">
-          <div className="logo">Harwinder Singh</div>
-
-          <ul className={`nav-links${open ? ' open' : ''}`}>
-            {links.map(({to,label}) => (
-              <li key={to}>
-                <NavLink
-                  to={to}
-                  className={({isActive}) => isActive ? 'active' : ''}
-                  onClick={() => setOpen(false)}
-                >
-                  {label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-
-          <button
-            className="hamburger"
-            aria-label="Toggle menu"
-            onClick={() => setOpen(o => !o)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+    <Router basename="/my-portfolio">
+      <div className="app">
+        {/* Animated gradient background */}
+        <div className="gradient-bg">
+          <div 
+            className="gradient-orb gradient-orb-1" 
+            style={{
+              transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`
+            }}
+          />
+          <div 
+            className="gradient-orb gradient-orb-2" 
+            style={{
+              transform: `translate(${-mousePosition.x * 0.02}px, ${-mousePosition.y * 0.02}px)`
+            }}
+          />
+          <div className="gradient-orb gradient-orb-3" />
         </div>
-      </nav>
 
-      <div className="page">
+        {/* Glass Navigation */}
+        <motion.nav
+          className="glass-nav"
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <div className="nav-container">
+            <motion.div
+              className="nav-logo"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+            >
+              <span className="logo-text">HS</span>
+            </motion.div>
+            
+            <div className="nav-links">
+              <NavLink href="/">Home</NavLink>
+              <NavLink href="/projects">Projects</NavLink>
+              <NavLink href="/contact">Contact</NavLink>
+            </div>
+
+            <motion.button
+              className="nav-cta"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => window.location.href = '/contact'}
+            >
+              Let's Talk
+            </motion.button>
+          </div>
+        </motion.nav>
+
+        {/* Main Content */}
         <Routes>
-          <Route path="/"        element={<Home />}     />
-          <Route path="/projects"element={<Projects />} />
-          <Route path="/contact" element={<Contact />}  />
-          <Route path="/projects/seeme-voice" element={<Seeme />} />
+          <Route path="/" element={<BentoHome />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/seeme-voice" element={<SeeMe />} />
           <Route path="/projects/mars-field" element={<MarsField />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
     </Router>
+  );
+}
+
+function NavLink({ href, children }) {
+  const isActive = window.location.pathname === href;
+  
+  return (
+    <motion.a
+      href={href}
+      className={`nav-link ${isActive ? 'active' : ''}`}
+      whileHover={{ y: -2 }}
+      transition={{ duration: 0.2 }}
+    >
+      {children}
+      {isActive && (
+        <motion.div
+          className="nav-indicator"
+          layoutId="nav-indicator"
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+        />
+      )}
+    </motion.a>
   );
 }
 

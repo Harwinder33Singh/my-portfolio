@@ -1,8 +1,6 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './Projects.css';
-import SeeMe from './Projects/Seeme.jsx';
 import SeeMeLogo from '../assets/SeeMeLogo.png'
 import MOTF from '../assets/interplanetary-MARS_on_the_field-martian_landscape-asu-1920-1.jpg'
 import Career from '../assets/mqdefault.jpg'
@@ -24,7 +22,7 @@ const projects = [
   },
   {
     title: 'Career Xrcade',
-    description: 'Led design of interactive XR career simulations with Unity Physics Engine for Verizon’s Career Xrcade.',
+    description: 'Led design of interactive XR career simulations with Unity Physics Engine for Verizon\'s Career Xrcade.',
     image: Career,
     link: 'https://meteor.ame.asu.edu/projects/careerXRcade/'
   },
@@ -37,38 +35,81 @@ const projects = [
   {
     title: 'Med-GEMMA DR Classifier',
     description: 'Fine-tuned a medical vision LLM (Med-GEMMA) to classify diabetic retinopathy from retinal images.',
-    image: '/assets/medgemma.png',
-    link: '/projects/medgemma'
+    image: null, // Placeholder for missing image
+    link: '/projects/medgemma',
+    isPlaceholder: true
   }
 ];
-// Create a motion-enabled Link component
-const MotionLink = motion(Link);
 
 export default function Projects() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  };
+
   return (
-    <main className="projects-page page">
-      <h1>Featured Projects</h1>
-      <div className="projects-grid">
+    <motion.main
+      className="projects-bento-container"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.h1
+        className="projects-bento-heading"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Featured Projects
+      </motion.h1>
+
+      <div className="projects-bento-grid">
         {projects.map((proj, idx) => (
-          <MotionLink
-            to={proj.link}
-            className="project-card"
+          <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: idx * 0.1 }}
+            variants={cardVariants}
+            whileHover={{ scale: 1.03, y: -5 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
           >
-            <div className="card-image">
-              <img src={proj.image} alt={proj.title} />
+            <Link
+              to={proj.link}
+              className="projects-bento-card"
+            >
+            <div className="projects-thumb">
+              {proj.image ? (
+                <img src={proj.image} alt={proj.title} />
+              ) : (
+                <div className="projects-placeholder">
+                  <div className="placeholder-icon">🏥</div>
+                  <span className="placeholder-text">Med AI</span>
+                </div>
+              )}
             </div>
-            <div className="card-content">
-              <h3>{proj.title}</h3>
-              <p>{proj.description}</p>
+            <div className="projects-meta">
+              <h3 className="projects-title">{proj.title}</h3>
+              <p className="projects-desc">{proj.description}</p>
+              <span className="projects-cta">View details →</span>
             </div>
-          </MotionLink>
+            </Link>
+          </motion.div>
         ))}
       </div>
-    </main>
+    </motion.main>
   );
 }

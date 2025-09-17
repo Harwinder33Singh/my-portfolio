@@ -1,0 +1,640 @@
+/* ============================================
+   BENTO GRID HOME PAGE STYLES
+   ============================================ */
+
+   .bento-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 120px var(--spacing) var(--spacing);
+    min-height: 100vh;
+  }
+  
+  /* ============================================
+     BENTO GRID LAYOUT
+     ============================================ */
+  
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(120px, auto);
+    gap: var(--spacing);
+    grid-template-areas:
+      "hero hero hero hero"
+      "skills skills featured achievements"
+      "techstack techstack techstack techstack"
+      "exp exp spec spec"
+      "social social cta cta";
+  }
+  
+  /* ============================================
+     BENTO CARDS - BASE STYLES
+     ============================================ */
+  
+  .bento-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--glass-border);
+    padding: var(--spacing);
+    box-shadow: var(--glass-shadow);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+  }
+  
+  .bento-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    pointer-events: none;
+  }
+  
+  .bento-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+  }
+  
+  /* ============================================
+     HERO CARD
+     ============================================ */
+  
+  .bento-hero {
+    grid-area: hero;
+    background: linear-gradient(135deg, var(--glass-bg), rgba(102, 126, 234, 0.1));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 300px;
+  }
+  
+  .hero-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
+    border-radius: var(--border-radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+  
+  .hero-title {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  
+  .gradient-text {
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .hero-subtitle {
+    font-size: 18px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 90%;
+  }
+  
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+  }
+  
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  
+  /* ============================================
+     SKILLS GRID
+     ============================================ */
+  
+  .bento-skills {
+    grid-area: skills;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  
+  .skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    aspect-ratio: 1;
+  }
+  
+  .skill-item svg {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  
+  .skill-item span {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+  
+  .skill-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* ============================================
+     FEATURED PROJECT
+     ============================================ */
+  
+  .bento-featured {
+    grid-area: featured;
+    background: linear-gradient(135deg, rgba(250, 112, 154, 0.1), rgba(254, 225, 64, 0.1));
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .featured-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: var(--gradient-5);
+    color: white;
+    border-radius: var(--border-radius-sm);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    width: fit-content;
+  }
+  
+  .featured-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+  }
+  
+  .featured-desc {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+  
+  .featured-tech {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  .tech-tag {
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius-sm);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+  }
+  
+  .featured-cta {
+    padding: 12px 24px;
+    background: var(--gradient-1);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    align-self: flex-start;
+  }
+  
+  .featured-cta:hover {
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+  }
+  
+  /* ============================================
+     EXPERIENCE TIMELINE
+     ============================================ */
+  
+  .bento-experience {
+    grid-area: exp;
+  }
+  
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+  }
+  
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gradient-1), var(--gradient-3));
+    opacity: 0.3;
+  }
+  
+  .timeline-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  
+  .timeline-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--gradient-1);
+    flex-shrink: 0;
+    margin-top: 2px;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  }
+  
+  .timeline-content {
+    flex: 1;
+  }
+  
+  .timeline-year {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  
+  .timeline-role {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+  
+  .timeline-company {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+  
+  /* ============================================
+     SPECIALIZATIONS
+     ============================================ */
+  
+  .bento-specializations {
+    grid-area: spec;
+    background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(0, 242, 254, 0.1));
+  }
+  
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .spec-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+  }
+  
+  .spec-icon {
+    font-size: 32px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  
+  .spec-item span {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+  
+  .spec-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  /* ============================================
+     SOCIAL LINKS
+     ============================================ */
+  
+  .bento-social {
+    grid-area: social;
+    background: var(--gradient-2);
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+  }
+  
+  .social-link {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--border-radius-sm);
+    color: white;
+    font-size: 24px;
+    transition: var(--transition);
+    text-decoration: none;
+  }
+  
+  .social-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-4px);
+  }
+  
+  /* ============================================
+     CALL TO ACTION
+     ============================================ */
+  
+  .bento-cta {
+    grid-area: cta;
+    background: linear-gradient(135deg, rgba(67, 233, 123, 0.1), rgba(56, 249, 215, 0.1));
+    display: flex;
+    align-items: center;
+  }
+  
+  .cta-content {
+    text-align: center;
+    width: 100%;
+  }
+  
+  .cta-content h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+  
+  .cta-content p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+  
+  .cta-button {
+    padding: 12px 32px;
+    background: var(--gradient-4);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .cta-button:hover {
+    box-shadow: 0 8px 24px rgba(67, 233, 123, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  /* ============================================
+     RESPONSIVE DESIGN
+     ============================================ */
+  
+  @media (max-width: 1024px) {
+    .bento-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+        "hero hero"
+        "skills featured"
+        "achievements techstack"
+        "exp spec"
+        "social cta";
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .bento-container {
+      padding: 100px 16px 16px;
+    }
+
+    .bento-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      grid-template-areas:
+        "hero"
+        "featured"
+        "achievements"
+        "skills"
+        "techstack"
+        "exp"
+        "spec"
+        "social"
+        "cta";
+    }
+
+    .techstack-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  
+    .hero-title {
+      font-size: 32px;
+    }
+  
+    .hero-subtitle {
+      font-size: 16px;
+      max-width: 100%;
+    }
+  
+    .hero-stats {
+      gap: 24px;
+    }
+  
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .spec-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+  
+    .social-links {
+      gap: 16px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .bento-card {
+      padding: 20px;
+    }
+  
+    .hero-title {
+      font-size: 28px;
+    }
+  
+    .skills-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+  
+    .skill-item {
+      padding: 12px 8px;
+    }
+  
+    .skill-item svg {
+      font-size: 24px;
+    }
+  
+    .spec-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .techstack-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* ============================================
+     ACHIEVEMENTS/CERTIFICATIONS
+     ============================================ */
+
+  .bento-achievements {
+    grid-area: achievements;
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.1));
+    display: flex;
+    flex-direction: column;
+  }
+
+  .achievement-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .achievement-item:last-child {
+    border-bottom: none;
+  }
+
+  .achievement-icon {
+    font-size: 20px;
+    color: #FFC107;
+  }
+
+  .achievement-text {
+    flex: 1;
+  }
+
+  .achievement-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+
+  .achievement-desc {
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+
+  /* ============================================
+     EXTENDED TECH STACK
+     ============================================ */
+
+  .bento-techstack {
+    grid-area: techstack;
+    background: linear-gradient(135deg, rgba(156, 39, 176, 0.1), rgba(233, 30, 99, 0.1));
+  }
+
+  .techstack-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    aspect-ratio: 1;
+  }
+
+  .tech-item svg {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .tech-item span {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: center;
+  }
+
+  .tech-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }

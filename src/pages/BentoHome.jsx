@@ -56,8 +56,7 @@ const BentoHome = () => {
               Hi, I'm <span className="gradient-text">Harwinder</span>
             </h1>
             <p className="hero-subtitle">
-              Software Engineer with 4.0 GPA specializing in SaaS, cloud solutions,
-              and real-time systems across AI, iOS, and XR domains
+            Backend-focused full-stack developer with 4.0 GPA. I build real-time AI pipelines, REST APIs, and clean UIs — from WebRTC voice systems to iOS apps. Python, JavaScript, PHP, MySQL, no framework dependency.
             </p>
             <div className="hero-stats">
               <div className="stat">
@@ -70,7 +69,7 @@ const BentoHome = () => {
               </div>
               <div className="stat">
                 <div className="stat-value">May 2025</div>
-                <div className="stat-label">Graduating</div>
+                <div className="stat-label">Graduated</div>
               </div>
             </div>
           </div>

@@ -619,7 +619,7 @@
     border-radius: var(--border-radius-sm);
     cursor: pointer;
     transition: var(--transition);
-    aspect-ratio: 1;
+    height: 80px;
   }
 
   .tech-item svg {

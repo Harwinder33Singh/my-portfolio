@@ -56,7 +56,7 @@ const BentoHome = () => {
               Hi, I'm <span className="gradient-text">Harwinder</span>
             </h1>
             <p className="hero-subtitle">
-            Backend-focused full-stack developer with 4.0 GPA. I build real-time AI pipelines, REST APIs, and clean UIs — from WebRTC voice systems to iOS apps. Python, JavaScript, PHP, MySQL, no framework dependency.
+            Backend-focused full-stack developer with 4.0 GPA. I build real-time AI pipelines, REST APIs, and clean UIs, from WebRTC voice systems to iOS apps. Python, JavaScript, PHP, MySQL, no framework dependency.
             </p>
             <div className="hero-stats">
               <div className="stat">
